@@ -105,7 +105,7 @@ void MainWindow::on_actionLoad_triggered()
     }
     for (auto itr = j["obstacles"].begin(); itr!= j["obstacles"].end(); itr++){
         Obstacle2D* obstacle = new Obstacle2D(l->m_parent);
-        obstacle->m_id = (*itr)["id"];
+        obstacle->m_id = (*itr)["id"].get<std::string>();
         QVector2D pos((*itr)["pos_x"], (*itr)["pos_y"]);
         obstacle->compute(pos, 20, 100);
         obstacle->m_color = QVector3D(1,0,0);
